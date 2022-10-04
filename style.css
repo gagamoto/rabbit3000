@@ -4,5 +4,10 @@
     touch-action: manipulation;
 }
 canvas {
+    margin: auto;
     position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
