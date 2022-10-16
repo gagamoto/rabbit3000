@@ -1,27 +1,12 @@
 'use strict';
 import {GameObject} from './gameobject.js';
 import {Drawing} from './drawing.js';
+import {Controller} from './controller.js';
 
 const GameStateStarting = 0; // FIXME
 const GameStateStarted = 1; // FIXME
 const GameStateRunning = 2; // FIXME
 
-// FIXME another file
-class Controller {
-    constructor() {
-        this.keysDown = new Object();
-        document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
-        document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
-    }
-    keyDownHandler(e) {
-        this.keysDown[e.key] = true;
-    }
-    keyUpHandler(e) {
-        this.keysDown[e.key] = false;
-    }
-    isDown(key) {return this.keysDown[key];}
-    // FIXME methods: isUp, wasDown
-}
 
 export class Game {
     static RATIO_WIDTH = 10;
@@ -55,7 +40,7 @@ export class Game {
         this.context.clearRect(0, 0, this.context.canvas.clientWidth, this.context.canvas.clientHeight);
         // Draw a background (debug)
         if (this.state == GameStateStarting) {
-            this.fillBackground("blue"); // FIXME
+            this.fillBackground("green"); // FIXME
         } else if (this.state == GameStateStarted) {
         } else if (this.state == GameStateRunning) {
             this.fillBackground("yellow");
