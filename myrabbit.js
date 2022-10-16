@@ -1,7 +1,7 @@
 'use strict';
-import { GameObject } from "./gameobject.js";
+import { PseudoGravityObject } from "./gameobject.js";
 
-export class MyRabbit extends GameObject{
+export class MyRabbit extends PseudoGravityObject{
     constructor(xCenter=0, yCenter=0, width, height) {
         console.assert(width);
         console.assert(height);
@@ -10,5 +10,6 @@ export class MyRabbit extends GameObject{
             yCenter - height / 2,
             width, height
         );
+        // FIXME Set pseudo gravity values here!
     }
 }

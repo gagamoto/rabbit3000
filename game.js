@@ -29,6 +29,10 @@ export class Game {
         this.pc = null;
     }
     control() {
+        // FIXME boost 
+        if (this.controller.isDown("ArrowUp")) {
+            this.pc.dy -= 10; // FIXME call boost method!
+        }
         // FIXME increase speed (dx)
         if (this.controller.isDown("ArrowRight")) {
             this.pc.x += 1;
@@ -36,12 +40,12 @@ export class Game {
             this.pc.x -= 1;
         }
         // FIXME enable/disable gravity for debug purpose
-        if (!this.controller.isDown("g")) {
-            this.pc.dy = 15;
-        } else { this.pc.dy = 0; }
+        // if (!this.controller.isDown("g")) {
+        //     this.pc.dy = 0;
+        // } else { this.pc.dy = 0; }
         // FIXME reset character position for debug purpose
         if (this.controller.isDown("r")) {
-            console.log("Hello!");
+            console.debug("Reset central position!");
             this.pc.setCenterPosition(Game.REFERENCE_WIDTH/2, Game.REFERENCE_HEIGHT/2);
         }
     }
@@ -67,7 +71,6 @@ export class Game {
         // FIXME overload
         this.state = GameStateStarting;
         // FIXME define RABBIT width/height somewhere else
-        // FIXME center position in RABBIT constructor
         this.pc = new MyRabbit(
             Game.REFERENCE_WIDTH/2, Game.REFERENCE_HEIGHT/2,
             105, 105);

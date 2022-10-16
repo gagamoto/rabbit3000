@@ -30,3 +30,21 @@ export class GameObject {
         this.setPosition(xCenter - this.width / 2, yCenter - this.height / 2);
     }
 }
+
+export class PseudoGravityObject extends GameObject {
+    constructor(x=0, y=0, width, height) {
+        console.assert(width);
+        console.assert(height);
+        super(x, y, width, height);
+        this.pseudoVerticalStep = 3; // FIXME set to 0 here, custom in overloaded constructor
+        this.maxVerticalSpeed = 16; // FIXME as above
+    }
+    isFalling() {return true;}
+    move() {
+        if (this.isFalling()) {
+            this.dy += this.pseudoVerticalStep;
+            if (this.dy > this.maxVerticalSpeed) {this.dy = this.maxVerticalSpeed;}
+        }
+        super.move();
+    }
+}
