@@ -1,14 +1,5 @@
-// FIXME another file
-function drawRect(context, x, y, width, height, fillStyle, strokeStyle, lineWidth) {
-    context.beginPath();
-    context.fillStyle = fillStyle;
-    context.strokeStyle = strokeStyle;
-    context.lineWidth = lineWidth;
-    context.rect(x, y, width, height);
-    context.stroke();
-    context.fill();
-    context.closePath();
-}
+'use strict';
+import {Drawing} from './drawing.js';
 
 export class GameObject {
     constructor(x=0, y=0, width, height) {
@@ -21,8 +12,8 @@ export class GameObject {
     }
     draw(context) {
         // Hit box for debug purpose
-        drawRect(
+        Drawing.drawRect(
             context, this.x, this.y, this.width, this.height,
-            "purple", "purple", 0)
+            "black", "red", 10)
     }
 }

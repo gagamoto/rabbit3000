@@ -1,21 +1,10 @@
 'use strict';
 import {GameObject} from './gameobject.js';
+import {Drawing} from './drawing.js';
 
 const GameStateStarting = 0; // FIXME
 const GameStateStarted = 1; // FIXME
 const GameStateRunning = 2; // FIXME
-
-// FIXME another file
-function drawRect(context, x, y, width, height, fillStyle, strokeStyle, lineWidth) {
-    context.beginPath();
-    context.fillStyle = fillStyle;
-    context.strokeStyle = strokeStyle;
-    context.lineWidth = lineWidth;
-    context.rect(x, y, width, height);
-    context.stroke();
-    context.fill();
-    context.closePath();
-}
 
 class GameStates {}
 
@@ -50,7 +39,7 @@ export class Game {
         this.pc.draw(this.context);
     }
     fillBackground(color) {
-        drawRect(
+        Drawing.drawRect(
             this.context,
             0, 0, Game.REFERENCE_WIDTH, Game.REFERENCE_HEIGHT,
             color, color, 0);
