@@ -18,6 +18,7 @@ export class GameObject {
             context, this.x, this.y, this.width, this.height,
             "black", "red", 10)
     }
+    getTop() { return this.y;}
     move() {
         this.x += this.dx;
         this.y += this.dy;
@@ -36,13 +37,13 @@ export class PseudoGravityObject extends GameObject {
         console.assert(width);
         console.assert(height);
         super(x, y, width, height);
-        this.pseudoVerticalStep = 3; // FIXME set to 0 here, custom in overloaded constructor
-        this.maxVerticalSpeed = 16; // FIXME as above
+        this.pseudoVerticalStep = 2; // FIXME set to 0 here, custom in overloaded constructor
+        this.maxVerticalSpeed = 20; // FIXME as above
     }
     isFalling() {return true;}
     move() {
         if (this.isFalling()) {
-            this.dy += this.pseudoVerticalStep;
+            this.dy += this.pseudoVerticalStep; // FIXME increase step when going up?
             if (this.dy > this.maxVerticalSpeed) {this.dy = this.maxVerticalSpeed;}
         }
         super.move();

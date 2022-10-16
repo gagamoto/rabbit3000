@@ -30,8 +30,8 @@ export class Game {
     }
     control() {
         // FIXME boost 
-        if (this.controller.isDown("ArrowUp")) {
-            this.pc.dy -= 10; // FIXME call boost method!
+        if (this.controller.isDown("ArrowUp")) { // FIXME and not was down!
+            this.pc.boostUp();
         }
         // FIXME increase speed (dx)
         if (this.controller.isDown("ArrowRight")) {
