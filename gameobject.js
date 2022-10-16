@@ -22,4 +22,11 @@ export class GameObject {
         this.x += this.dx;
         this.y += this.dy;
     }
+    setPosition(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    setCenterPosition(xCenter, yCenter) {
+        this.setPosition(xCenter - this.width / 2, yCenter - this.height / 2);
+    }
 }

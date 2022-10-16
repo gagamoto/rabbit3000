@@ -36,9 +36,14 @@ export class Game {
             this.pc.x -= 1;
         }
         // FIXME enable/disable gravity for debug purpose
-        if (this.controller.isDown("g")) {
-            this.pc.dy = 10;
+        if (!this.controller.isDown("g")) {
+            this.pc.dy = 15;
         } else { this.pc.dy = 0; }
+        // FIXME reset character position for debug purpose
+        if (this.controller.isDown("r")) {
+            console.log("Hello!");
+            this.pc.setCenterPosition(Game.REFERENCE_WIDTH/2, Game.REFERENCE_HEIGHT/2);
+        }
     }
     draw() {
         this.context.clearRect(0, 0, this.context.canvas.clientWidth, this.context.canvas.clientHeight);
