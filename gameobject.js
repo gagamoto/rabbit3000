@@ -7,6 +7,8 @@ export class GameObject {
         console.assert(height);
         this.x = x;
         this.y = y;
+        this.dx = 0;
+        this.dy = 0;
         this.width = width;
         this.height = height;
     }
@@ -15,5 +17,9 @@ export class GameObject {
         Drawing.drawRect(
             context, this.x, this.y, this.width, this.height,
             "black", "red", 10)
+    }
+    move() {
+        this.x += this.dx;
+        this.y += this.dy;
     }
 }

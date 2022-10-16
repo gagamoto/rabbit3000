@@ -1,7 +1,7 @@
 'use strict';
-import {GameObject} from './gameobject.js';
-import {Drawing} from './drawing.js';
-import {Controller} from './controller.js';
+import { MyRabbit } from './myrabbit.js';
+import { Drawing } from './drawing.js';
+import { Controller } from './controller.js';
 
 const GameStateStarting = 0; // FIXME
 const GameStateStarted = 1; // FIXME
@@ -35,12 +35,16 @@ export class Game {
         } else if (this.controller.isDown("ArrowLeft")) {
             this.pc.x -= 1;
         }
+        // FIXME enable/disable gravity for debug purpose
+        if (this.controller.isDown("g")) {
+            this.pc.dy = 10;
+        } else { this.pc.dy = 0; }
     }
     draw() {
         this.context.clearRect(0, 0, this.context.canvas.clientWidth, this.context.canvas.clientHeight);
         // Draw a background (debug)
         if (this.state == GameStateStarting) {
-            this.fillBackground("green"); // FIXME
+            this.fillBackground("orange"); // FIXME
         } else if (this.state == GameStateStarted) {
         } else if (this.state == GameStateRunning) {
             this.fillBackground("yellow");
@@ -57,10 +61,19 @@ export class Game {
     initialize() {
         // FIXME overload
         this.state = GameStateStarting;
-        this.pc = new GameObject(100, 100, 100, 100); // FIXME define width/height somewhere else
+        // FIXME define RABBIT width/height somewhere else
+        // FIXME center position in RABBIT constructor
+        this.pc = new MyRabbit(
+            Game.REFERENCE_WIDTH/2, Game.REFERENCE_HEIGHT/2,
+            105, 105);
+    }
+    move() {
+        this.pc.move();
     }
     run() {
         this.control();
+        this.move();
+        // this.collide(); // FIXME
         this.draw();
         requestAnimationFrame(() => this.run());
     }
